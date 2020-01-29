@@ -2,15 +2,6 @@
 'use strict'
 
 import meow from "meow";
-import semver, { SemVer } from "semver";
-import { readFileSync, writeFileSync } from "fs";
-import { LVCodeFile } from "./types";
-import { fail } from "assert";
-import { encoded } from "@lv-game-editor/lv-cli"
-import { createSubdirs } from "./helpers"
-
-const version   = new SemVer("1.2.0")
-const baseline  = new SemVer("1.0.0")
 
 let cli = meow("",{ flags: {
     input:  { type: 'string', alias: 'i'},
@@ -19,6 +10,7 @@ let cli = meow("",{ flags: {
 
 // STEP: parse file, validating format
 
+/*
 const jsonString = readFileSync(cli.flags.input, "utf8")
 const data:LVCodeFile = JSON.parse(jsonString) 
 
@@ -47,3 +39,5 @@ let encode:encoded = {
 let response = JSON.stringify(encode, null, " ") + "\n"
 createSubdirs(cli.flags.output)
 writeFileSync(cli.flags.output, response)
+*/
+

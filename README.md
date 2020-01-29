@@ -1,3 +1,3 @@
-# encoder-lvcode
+# encoder-lvproject
 lv-cli module (distruibuted via npm) to encode editor files
-from: lvcode (a json file with stripes of C++ code) / out -> lv .h stripe format (also a json)
+from: lvproject (a json file describing the game project) / out -> lv .h stripe format (also a json)
