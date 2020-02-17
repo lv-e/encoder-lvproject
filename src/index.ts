@@ -15,10 +15,6 @@ let cli = meow("",{ flags: {
 
 let path = cli.flags.input
 let json = readFileSync(path, "utf-8")
-const projectFolder:rootFolders = JSON.parse(json)
-
-path = projectFolder.project_file.path
-json = readFileSync(path, "utf-8")
 const project:projectContent = JSON.parse(json)
 
 console.log("project version is " + project.header.version)
