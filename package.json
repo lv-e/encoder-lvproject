@@ -1,6 +1,6 @@
 {
   "name": "@lv-game-editor/encoder-lvproject",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "encoder for .lvproject files",
   "author": "“Lino <luizgustavolino@gmail.com> (http://github.com/luizgustavolino)",
   "homepage": "https://github.com/lv-e/encoder-lvproject",
@@ -26,11 +26,12 @@
     "rebuild": "rm -rf ./lib && tsc -p . && node ."
   },
   "dependencies": {
-    "@lv-game-editor/lv-cli": "^1.0.12",
+    "@lv-game-editor/lv-cli": "^1.0.17",
     "@types/semver": "^6.2.0",
     "esm": "^3.2.25",
     "meow": "^6.0.0",
-    "semver": "^7.1.1"
+    "semver": "^7.1.1",
+    "shelljs": "^0.8.3"
   },
   "devDependencies": {
     "@types/node": "^13.1.0",
