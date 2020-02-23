@@ -23,7 +23,8 @@
     "lv-encoder-lvproject": "./lib/index.js"
   },
   "scripts": {
-    "rebuild": "rm -rf ./lib && tsc -p . && node ."
+    "rebuild": "rm -rf ./lib && tsc -p .",
+    "version-bump": "npm run rebuild && git commit -a -m 'version bump' && npm version patch -m 'version bump' && npm publish"
   },
   "dependencies": {
     "@lv-game-editor/lv-cli": "^1.0.17",
