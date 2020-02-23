@@ -37,7 +37,7 @@ function downloadEngine(){
     shell.cd("/tmp")
     shell.mkdir("-p", engineFolder)
     shell.cd(engineFolder)
-    shell.exec("git clone --no-checkout -q" + engineRepo)
+    shell.exec("git clone --no-checkout -q " + engineRepo)
     shell.cd(engineRepoName)
     shell.exec("git config core.sparseCheckout true")
     shell.exec("echo \"src/*\"> .git/info/sparse-checkout")
