@@ -25,7 +25,8 @@ publish(){
                 read commit_message; echo "--"
 
                 npm run rebuild
-                git commit --allow-empty -a -m '$commit_message'
+                git add .
+                git commit --allow-empty -m '$commit_message'
                 npm version patch -m 'npm version bump'
                 npm publish
                 break;;
