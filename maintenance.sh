@@ -13,7 +13,7 @@ publish(){
             echo "will now rebuild, commit and publish."
         else
             echo "you don't have local changes. do you really need a new version?"
-            echo "anayway, will now rebuild, commit (because of /lib) and publish."
+            echo "anyway, will now rebuild, commit (because of /lib) and publish."
         fi
         
         read -p "it's that okay (y/n)? " yn; echo "--"
