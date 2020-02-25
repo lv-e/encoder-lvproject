@@ -29,6 +29,8 @@ publish(){
                 git commit --allow-empty -m '$commit_message'
                 npm version patch -m 'npm version bump'
                 npm publish
+                echo "there you go!"
+
                 break;;
             [Nn]* )
                 echo "ok! bye."
