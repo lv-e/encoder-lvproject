@@ -41,15 +41,32 @@ publish(){
     done
 }
 
+dryrun(){
+    npm run rebuild
+    node . verbose -i /tmp/lv-dryrun/game.lvproject -o /tmp/lv-project-dryrun
+    open /tmp/lv-project-dryrun
+}
+
+showHelp(){
+    npm run rebuild
+    node . help
+}
+
 ## what should we do?
 
  while true; do
 
-        echo "available options are: publish (p)."
+        echo "available options are:"
+        echo "-[p] publish"
+        echo "-[r] dryrun"
+        echo "-[h] help"
+
         read -p "choose one: " opt; echo "--"
 
         case $opt in
             [Pp]* ) publish; break;;
+            [Rr]* ) dryrun; break;;
+            [Hh]* ) showHelp; break;;
             * ) echo "ok! bye."; exit;;
         esac
 done

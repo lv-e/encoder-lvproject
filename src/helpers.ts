@@ -1,9 +1,11 @@
 import path = require("path");
 import { existsSync, mkdirSync } from "fs";
 
-export function createDirs(filePath:string) {
-    const dir = path.dirname(filePath);
+export function log(verbose:boolean, message:string) {
+    if (verbose) console.log(message);
+}
+
+export function createDirs(dir:string) {
     if (existsSync(dir)) return true;
-    createDirs(dir);
     mkdirSync(dir);
 }
