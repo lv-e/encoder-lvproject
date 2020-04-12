@@ -65,10 +65,11 @@ function checkoutCorrectVersion(){
 }
 
 function moveFiles(){
-    log(vflag, "moving engine files to -o folder (" + cli.flags.output + ")")
-    createDirs(cli.flags.output)
+    const finalDir = join(cli.flags.output, "lv-engine")
+    log(vflag, "moving engine files to -o folder (" + finalDir + ")")
+    createDirs(finalDir)
     shell.cd(join(enginePath, "src"))
-    shell.exec("cp -r . " + cli.flags.output)
+    shell.exec("cp -r . " + finalDir)
 }
 
 if(!engineAvailable()) 

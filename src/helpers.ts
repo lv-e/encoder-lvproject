@@ -7,5 +7,5 @@ export function log(verbose:boolean, message:string) {
 
 export function createDirs(dir:string) {
     if (existsSync(dir)) return true;
-    mkdirSync(dir);
+    mkdirSync(dir, { recursive: true });
 }
