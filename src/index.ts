@@ -53,7 +53,7 @@ function downloadEngine(){
     shell.exec("git clone --no-checkout -q " + engineRepo)
     shell.cd(engineRepoName)
     shell.exec("git config core.sparseCheckout true")
-    shell.exec("echo \"src/*\"> .git/info/sparse-checkout")
+    shell.exec("echo \"lv-engine/*\"> .git/info/sparse-checkout")
 }
 
 function checkoutCorrectVersion(){

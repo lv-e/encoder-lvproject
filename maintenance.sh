@@ -42,6 +42,7 @@ publish(){
 }
 
 dryrun(){
+    mkdir /tmp/lv-project-dryrun
     npm run rebuild
     node . verbose -i /tmp/lv-dryrun/game.lvproject -o /tmp/lv-project-dryrun
     open /tmp/lv-project-dryrun
