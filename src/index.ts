@@ -68,7 +68,7 @@ function moveFiles(){
     const finalDir = join(cli.flags.output, "lv-engine")
     log(vflag, "moving engine files to -o folder (" + finalDir + ")")
     createDirs(finalDir)
-    shell.cd(join(enginePath, "src"))
+    shell.cd(join(enginePath, "lv-engine"))
     shell.exec("cp -r . " + finalDir)
 }
 
