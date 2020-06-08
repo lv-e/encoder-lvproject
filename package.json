@@ -1,6 +1,6 @@
 {
   "name": "@lv-game-editor/encoder-lvproject",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "encoder for .lvproject files",
   "author": "“Lino <luizgustavolino@gmail.com> (http://github.com/luizgustavolino)",
   "homepage": "https://github.com/lv-e/encoder-lvproject",
@@ -34,12 +34,12 @@
     "shelljs": "0.8.x"
   },
   "devDependencies": {
+    "@olavoparno/jest-badges-readme": "^1.4.1",
     "@types/jest": "^25.x",
     "@types/node": "^13.x",
     "jest": "^25.x",
     "ts-jest": "^25.x",
     "ts-node": "^8.x",
-    "typescript": "^3.9.3",
-    "@olavoparno/jest-badges-readme": "^1.4.1"
+    "typescript": "^3.9.3"
   }
 }
