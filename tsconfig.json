@@ -9,12 +9,15 @@
     "outDir": "lib",
     "rootDir": "src",
     "strict": true,
-    "types": ["node"],
+    "typeRoots": [
+			"./node_modules/@types",
+			"./types"
+		],
     "esModuleInterop": true,
     "resolveJsonModule": true
 
   },
   "exclude": [
-    "lib",
+    "lib", "**/*.test.ts"
   ]
 }

@@ -1,7 +1,6 @@
 #!/bin/bash
-
-# say hello because it's polite
-echo "hi! this is > lvproject < 's mantenance script"
+set -e
+echo "hi! this is lv encoder for > lvproject < file's mantenance script"
 
 ## available commands
 publish(){
@@ -24,11 +23,14 @@ publish(){
                 echo "publishing a new npm version. what's the commit message?"
                 read commit_message; echo "--"
 
-                npm run rebuild
+                rebuild
                 git add .
                 git commit --allow-empty -m "$commit_message"
-                npm version patch -m 'npm version bump'
-                npm publish
+
+                yarn config set version-tag-prefix "v"
+                yarn version --non-interactive --patch
+                yarn publish --non-interactive
+                
                 echo "there you go!"
 
                 break;;
@@ -41,16 +43,18 @@ publish(){
     done
 }
 
-dryrun(){
-    mkdir /tmp/lv-project-dryrun
-    npm run rebuild
-    node . verbose -i /tmp/lv-dryrun/game.lvproject -o /tmp/lv-project-dryrun
-    open /tmp/lv-project-dryrun
+rebuild(){
+    rm -rf ./lib
+    tsc -p .
 }
 
-showHelp(){
-    npm run rebuild
-    node . help
+test(){
+
+    echo "cleaning and rebuilding..."
+    rebuild
+
+    echo "running all tests using jest"
+    NODE_OPTIONS=--trace-warnings yarn jest --coverage 
 }
 
 ## what should we do?
@@ -58,16 +62,13 @@ showHelp(){
  while true; do
 
         echo "available options are:"
-        echo "-[p] publish"
-        echo "-[r] dryrun"
-        echo "-[h] help"
-
+        echo "1) publish"
+        echo "2) run tests"
         read -p "choose one: " opt; echo "--"
 
         case $opt in
-            [Pp]* ) publish; break;;
-            [Rr]* ) dryrun; break;;
-            [Hh]* ) showHelp; break;;
+            1) publish; break;;
+            2) test; break;;
             * ) echo "ok! bye."; exit;;
         esac
 done

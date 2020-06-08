@@ -22,21 +22,23 @@
   "bin": {
     "lv-encoder-lvproject": "./lib/index.js"
   },
-  "scripts": {
-    "rebuild": "rm -rf ./lib && tsc -p ."
-  },
   "dependencies": {
-    "@lv-game-editor/lv-cli": "^1.0.17",
-    "@types/semver": "^6.2.0",
+    "@lv-game-editor/lv-cli": "^1.x",
+    "@types/rimraf": "^3.0.0",
+    "@types/semver": "7.x",
+    "@types/shelljs": "0.8.x",
     "esm": "^3.2.25",
-    "meow": "^6.0.0",
-    "semver": "^7.1.1",
-    "shelljs": "^0.8.3"
+    "meow": "^6.x",
+    "rimraf": "^3.0.2",
+    "semver": "7.x",
+    "shelljs": "0.8.x"
   },
   "devDependencies": {
-    "@types/node": "^13.1.0",
-    "nodemon": "^2.0.2",
-    "ts-node": "^8.5.4",
-    "typescript": "^3.7.4"
+    "@types/jest": "^25.x",
+    "@types/node": "^13.x",
+    "jest": "^25.x",
+    "ts-jest": "^25.x",
+    "ts-node": "^8.x",
+    "typescript": "^3.9.3"
   }
 }
