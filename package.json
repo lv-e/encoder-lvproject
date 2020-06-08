@@ -39,6 +39,7 @@
     "jest": "^25.x",
     "ts-jest": "^25.x",
     "ts-node": "^8.x",
-    "typescript": "^3.9.3"
+    "typescript": "^3.9.3",
+    "@olavoparno/jest-badges-readme": "^1.4.1"
   }
 }

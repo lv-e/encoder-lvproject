@@ -14,11 +14,10 @@ export function readProjectFile(path:string):lv.projectContent{
     return project
 }
 
-export function moveEngine(def:lv.engineDefinition, destination:string, workingDir:string) {
+export function moveEngine(def:lv.engineDefinition, workingDir:string, destination:string) {
     
-    const workingDirName = workingDir
     const repoName = findRepoName(def.repo)
-    const engineSourcePath = `/tmp/${workingDirName}/${repoName}/lv-engine/`
+    const engineSourcePath = `/tmp/${workingDir}/${repoName}/lv-engine/`
 
     createDirs(destination)
     shell.cd(engineSourcePath)

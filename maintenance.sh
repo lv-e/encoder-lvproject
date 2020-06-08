@@ -51,10 +51,15 @@ rebuild(){
 test(){
 
     echo "cleaning and rebuilding..."
+    echo nok > .buildstatus
     rebuild
 
     echo "running all tests using jest"
-    NODE_OPTIONS=--trace-warnings yarn jest --coverage 
+    NODE_OPTIONS=--trace-warnings yarn jest
+    echo ok > .buildstatus
+
+    echo "updating those badges!"
+    yarn jest-badges-readme
 }
 
 ## what should we do?

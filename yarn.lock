@@ -458,6 +458,11 @@
     meow "^6.0.0"
     shelljs "^0.8.3"
 
+"@olavoparno/jest-badges-readme@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@olavoparno/jest-badges-readme/-/jest-badges-readme-1.4.1.tgz#75a100091d6667eab000e51325d0da4e901579e1"
+  integrity sha512-J2d9ZBA0BFJu3Z/9tlY1iB90yB12pXd1/P8LIdP8x4ES3mZmwHHXQu/hVeyaRMUaL3dBIuq+njuzjHdS8pYQaA==
+
 "@sinonjs/commons@^1.7.0":
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/@sinonjs/commons/-/commons-1.8.0.tgz#c8d68821a854c555bba172f3b06959a0039b236d"

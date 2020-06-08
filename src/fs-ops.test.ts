@@ -61,15 +61,16 @@ describe("moveEngine", () =>{
 
         const salt = crypto.randomBytes(16).toString('hex');
         const testWorkingDir = `${defaultWorkingDir}-${salt}`
-        const testPath = `/tmp/${testWorkingDir}/engine/`
+        const testPath = `/tmp/${testWorkingDir}/`
         const testDestination = `/tmp/test-destination-${salt}/`
         const testRepo = "https://github.com/lv-e/engine.git"
         const testTag  = "v0.0.17"
         
         let def = {repo: testRepo, tag: `tags/${testTag}`}
         downloadEngine(def, testWorkingDir)
-        moveEngine(def, testDestination, testWorkingDir)
+        moveEngine(def, testWorkingDir, testDestination)
 
+        expect(fs.existsSync(`${testDestination}`)).toBeTruthy()
         rimraf.sync(testPath)
         rimraf.sync(testDestination)
     })
