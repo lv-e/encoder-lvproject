@@ -1,8 +1,10 @@
 import * as lv from "@lv-game-editor/lv-cli"
-import fs from 'fs';
-
-import {createDirs, readProjectFile} from "./fs-ops";
 import rimraf from "rimraf";
+import fs from 'fs';
+import crypto from 'crypto';
+
+import {createDirs, readProjectFile, moveEngine} from "./fs-ops";
+import { downloadEngine, defaultWorkingDir } from "./git-ops";
 
 describe("createDirs", () =>{
     it("should be able to create subdirs",  () =>{
@@ -51,5 +53,24 @@ describe("readProjectFile", () =>{
             createDirs(path)
             createDirs(path)
         }).not.toThrowError()
+    })
+})
+
+describe("moveEngine", () =>{
+    it("should copy all files, recursively",  () =>{
+
+        const salt = crypto.randomBytes(16).toString('hex');
+        const testWorkingDir = `${defaultWorkingDir}-${salt}`
+        const testPath = `/tmp/${testWorkingDir}/engine/`
+        const testDestination = `/tmp/test-destination-${salt}/`
+        const testRepo = "https://github.com/lv-e/engine.git"
+        const testTag  = "v0.0.17"
+        
+        let def = {repo: testRepo, tag: `tags/${testTag}`}
+        downloadEngine(def, testWorkingDir)
+        moveEngine(def, testDestination, testWorkingDir)
+
+        rimraf.sync(testPath)
+        rimraf.sync(testDestination)
     })
 })

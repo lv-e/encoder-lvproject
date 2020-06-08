@@ -3,7 +3,7 @@ import fs from 'fs';
 import shell from "shelljs"
 import rimraf from "rimraf";
 
-import {findRepoName, downloadEngine, workingDirName} from "./git-ops";
+import {findRepoName, downloadEngine, defaultWorkingDir} from "./git-ops";
 
 describe("findRepoName", () =>{
 
@@ -27,18 +27,18 @@ describe("downloadEngine", () =>{
 
     it("should fail with error for invalid data", () =>{
         expect( () => {
-            downloadEngine({repo: "", tag: ""})
+            downloadEngine({repo: "", tag: ""}, defaultWorkingDir)
         }).toThrowError()
     })
 
     it("should checkout from github when a local copy is missing", () =>{
         
-        const testPath = `/tmp/${workingDirName}/engine`
+        const testPath = `/tmp/${defaultWorkingDir}/engine`
         const testRepo = "https://github.com/lv-e/engine.git"
         const testTag  = "v0.0.17"
 
         rimraf.sync(testPath)
-        downloadEngine({repo: testRepo, tag: `tags/${testTag}`})
+        downloadEngine({repo: testRepo, tag: `tags/${testTag}`}, defaultWorkingDir)
 
         shell.cd(testPath)
         const actualRepoName = shell.exec("git config --get remote.origin.url").stdout.trim()
@@ -50,7 +50,7 @@ describe("downloadEngine", () =>{
 
     it("should be able to cache and just change tags", () =>{
         
-        const testPath = `/tmp/${workingDirName}/engine`
+        const testPath = `/tmp/${defaultWorkingDir}/engine`
         const testRepo = "https://github.com/lv-e/engine.git"
 
         const testTagBefore  = "v0.0.16"
@@ -62,12 +62,12 @@ describe("downloadEngine", () =>{
         }
 
         rimraf.sync(testPath)
-        downloadEngine({repo: testRepo, tag: `tags/${testTagBefore}`})
+        downloadEngine({repo: testRepo, tag: `tags/${testTagBefore}`}, defaultWorkingDir)
         const beforeGitStats = fs.statSync(`${testPath}/.git`)
         shell.cd(testPath)
         testTag(testTagBefore)
 
-        downloadEngine({repo: testRepo, tag: `tags/${testTagAfter}`})
+        downloadEngine({repo: testRepo, tag: `tags/${testTagAfter}`}, defaultWorkingDir)
         const afterGitStats = fs.statSync(`${testPath}/.git`)
         shell.cd(testPath)
         testTag(testTagAfter)
@@ -79,7 +79,7 @@ describe("downloadEngine", () =>{
 
     it("should be able start from scrath when cached repo is unexpected", () =>{
 
-        const testPath = `/tmp/${workingDirName}/engine/`
+        const testPath = `/tmp/${defaultWorkingDir}/engine/`
         rimraf.sync(testPath)
 
         shell.mkdir("-p", testPath)
@@ -89,7 +89,7 @@ describe("downloadEngine", () =>{
         const testRepo = "https://github.com/lv-e/engine.git"
         const testTag  = "v0.0.17"
 
-        downloadEngine({repo: testRepo, tag: `tags/${testTag}`})
+        downloadEngine({repo: testRepo, tag: `tags/${testTag}`}, defaultWorkingDir)
         const actualTag = shell.exec("git describe --tags").stdout.trim()
         expect(actualTag).toEqual(testTag)
     })

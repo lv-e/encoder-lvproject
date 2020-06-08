@@ -3,7 +3,7 @@ import rimraf from 'rimraf'
 import fs from 'fs'
 import shell from "shelljs"
 
-export const workingDirName = "encode-lvproject_lv-engine"
+export const defaultWorkingDir = "encode-lvproject_lv-engine"
 
 export function findRepoName(repo:string) : string {
     const regex = /.*\/(.*)\.git/
@@ -13,9 +13,9 @@ export function findRepoName(repo:string) : string {
     return data[1]
 }
 
-export function downloadEngine(def:lv.engineDefinition){
+export function downloadEngine(def:lv.engineDefinition, workingDirName:string){
 
-    const repoName = findRepoName(def.repo)
+    const repoName       = findRepoName(def.repo)
     const workingDirPath = `/tmp/${workingDirName}/`
     const repoPath       = `/tmp/${workingDirName}/${repoName}/`
 
