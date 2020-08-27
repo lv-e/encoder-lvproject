@@ -1,11 +1,8 @@
 #!/usr/bin/env node
 'use strict'
 
-import { readProjectFile, moveEngine} from "./fs-ops";
-import { downloadEngine, defaultWorkingDir } from "./git-ops";
-import { exit } from "process";
-import { join } from "path";
 import meow from "meow";
+import { exit } from "process";
 
 const testing = (process.env.NODE_ENV === 'test')
 export let verbose = testing ? true : false
@@ -27,9 +24,9 @@ if (!testing) {
         verbose = true
     }
 
-    const project = readProjectFile(cli.flags.input)
-    const finalDestination = join(cli.flags.output, "lv-engine")
+    // const project = readProjectFile(cli.flags.input)
+    // const finalDestination = join(cli.flags.output, "lv-engine")
 
-    downloadEngine(project.header.engine, defaultWorkingDir)
-    moveEngine(project.header.engine, defaultWorkingDir, finalDestination)
+    // downloadEngine(project.header.engine, defaultWorkingDir)
+    // moveEngine(project.header.engine, defaultWorkingDir, finalDestination)
 }
